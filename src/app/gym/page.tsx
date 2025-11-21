@@ -1,4 +1,7 @@
+'use client';
+
 import type { Metadata } from "next";
+import { useRouter } from 'next/navigation';
 
 export const metadata: Metadata = {
   title: "Gym Equipment Sale Abu Dhabi | Commercial Fitness Equipment UAE - Energetic",
@@ -11,12 +14,14 @@ export const metadata: Metadata = {
 };
 
 export default function Gym() {
+  const router = useRouter();
+
   return (
     <section className="service_section layout_padding sub_page">
       <div className="container">
-        <a href="javascript:history.back()" className="back-button">
+        <button onClick={() => router.back()} className="back-button">
           <i className="fa fa-arrow-left" aria-hidden="true"></i> Back
-        </a>
+        </button>
         <div className="heading_container heading_center">
           <h1>Gym Equipment Sale in Abu Dhabi, UAE</h1>
         </div>

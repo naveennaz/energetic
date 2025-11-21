@@ -35,8 +35,8 @@ export default function ProductsSection() {
               <div className="detail-box">
                 <h6>Courts Flooring</h6>
                 <p>Premium multipurpose sport flooring and decking for indoor & outdoor facilities.</p>
-                <a href="#contact" onClick={(e) => { e.preventDefault(); scrollToContact(); }}>
-                  Get Quote <i className="fa fa-arrow-right"></i>
+                <a href="/courts-flooring">
+                  Read More <i className="fa fa-arrow-right"></i>
                 </a>
               </div>
             </div>
@@ -53,8 +53,8 @@ export default function ProductsSection() {
               <div className="detail-box">
                 <h6>Sauna & Steam Rooms</h6>
                 <p>Custom-made wellness solutions designed for ultimate relaxation and rejuvenation.</p>
-                <a href="#contact" onClick={(e) => { e.preventDefault(); scrollToContact(); }}>
-                  Get Quote <i className="fa fa-arrow-right"></i>
+                <a href="/sauna">
+                  Read More <i className="fa fa-arrow-right"></i>
                 </a>
               </div>
             </div>
@@ -73,8 +73,8 @@ export default function ProductsSection() {
                 <p>
                   Comprehensive range of professional gym equipment with supply, installation, and maintenance services.
                 </p>
-                <a href="#contact" onClick={(e) => { e.preventDefault(); scrollToContact(); }}>
-                  Get Quote <i className="fa fa-arrow-right"></i>
+                <a href="/gym">
+                  Read More <i className="fa fa-arrow-right"></i>
                 </a>
               </div>
             </div>
@@ -93,8 +93,8 @@ export default function ProductsSection() {
                 <p>
                   Secure storage solutions with RFID card and wristband access for modern facilities.
                 </p>
-                <a href="#contact" onClick={(e) => { e.preventDefault(); scrollToContact(); }}>
-                  Get Quote <i className="fa fa-arrow-right"></i>
+                <a href="/smart-lockers">
+                  Read More <i className="fa fa-arrow-right"></i>
                 </a>
               </div>
             </div>
@@ -113,8 +113,8 @@ export default function ProductsSection() {
                 <p>
                   Premium jacuzzis with advanced features - the perfect blend of luxury, style, and functionality.
                 </p>
-                <a href="#contact" onClick={(e) => { e.preventDefault(); scrollToContact(); }}>
-                  Get Quote <i className="fa fa-arrow-right"></i>
+                <a href="/jacuzzi">
+                  Read More <i className="fa fa-arrow-right"></i>
                 </a>
               </div>
             </div>
@@ -131,8 +131,8 @@ export default function ProductsSection() {
               <div className="detail-box">
                 <h6>Access Control Gates</h6>
                 <p>Secure speed gates ensuring efficient access control for high-traffic commercial areas.</p>
-                <a href="#contact" onClick={(e) => { e.preventDefault(); scrollToContact(); }}>
-                  Get Quote <i className="fa fa-arrow-right"></i>
+                <a href="/access-control-gates">
+                  Read More <i className="fa fa-arrow-right"></i>
                 </a>
               </div>
             </div>

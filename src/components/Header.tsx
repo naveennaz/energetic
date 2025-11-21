@@ -5,6 +5,8 @@ import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 
 export default function Header() {
+  const pathname = usePathname();
+  const isHomePage = pathname === '/';
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -49,12 +51,12 @@ export default function Header() {
 
   return (
     <>
-      <header className={`new-header ${scrolled ? 'scrolled' : ''}`}>
+      <header className={`new-header ${!isHomePage || scrolled ? 'scrolled' : ''}`}>
         <div className="header-container">
           <div className="container-fluid">
             <div className="header-content">
               {/* Logo */}
-              <a href="#home" onClick={(e) => { e.preventDefault(); scrollToSection('home'); }} className="logo-wrapper">
+              <Link href="/" className="logo-wrapper">
                 <div className="logo-design">
                   <span className="logo-letter">E</span>
                 </div>
@@ -62,38 +64,49 @@ export default function Header() {
                   <h1 className="company-name">ENERGETIC</h1>
                   <p className="company-subtitle">Fitness & Wellness Solutions</p>
                 </div>
-              </a>
+              </Link>
 
               {/* Desktop Navigation */}
               <nav className="desktop-nav">
-                <a 
-                  href="#home" 
-                  className={`nav-item ${activeSection === 'home' ? 'active' : ''}`}
-                  onClick={(e) => { e.preventDefault(); scrollToSection('home'); }}
-                >
-                  Home
-                </a>
-                <a 
-                  href="#about" 
-                  className={`nav-item ${activeSection === 'about' ? 'active' : ''}`}
-                  onClick={(e) => { e.preventDefault(); scrollToSection('about'); }}
-                >
-                  About Us
-                </a>
-                <a 
-                  href="#products" 
-                  className={`nav-item ${activeSection === 'products' ? 'active' : ''}`}
-                  onClick={(e) => { e.preventDefault(); scrollToSection('products'); }}
-                >
-                  Products
-                </a>
-                <a 
-                  href="#contact" 
-                  className={`nav-item ${activeSection === 'contact' ? 'active' : ''}`}
-                  onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }}
-                >
-                  Contact
-                </a>
+                {isHomePage ? (
+                  <>
+                    <a 
+                      href="#home" 
+                      className={`nav-item ${activeSection === 'home' ? 'active' : ''}`}
+                      onClick={(e) => { e.preventDefault(); scrollToSection('home'); }}
+                    >
+                      Home
+                    </a>
+                    <a 
+                      href="#about" 
+                      className={`nav-item ${activeSection === 'about' ? 'active' : ''}`}
+                      onClick={(e) => { e.preventDefault(); scrollToSection('about'); }}
+                    >
+                      About Us
+                    </a>
+                    <a 
+                      href="#products" 
+                      className={`nav-item ${activeSection === 'products' ? 'active' : ''}`}
+                      onClick={(e) => { e.preventDefault(); scrollToSection('products'); }}
+                    >
+                      Products
+                    </a>
+                    <a 
+                      href="#contact" 
+                      className={`nav-item ${activeSection === 'contact' ? 'active' : ''}`}
+                      onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }}
+                    >
+                      Contact
+                    </a>
+                  </>
+                ) : (
+                  <>
+                    <Link href="/#home" className="nav-item">Home</Link>
+                    <Link href="/#about" className="nav-item">About Us</Link>
+                    <Link href="/#products" className="nav-item">Products</Link>
+                    <Link href="/#contact" className="nav-item">Contact</Link>
+                  </>
+                )}
               </nav>
 
               {/* Contact Info */}
@@ -131,38 +144,61 @@ export default function Header() {
         {/* Mobile Menu */}
         <div className={`mobile-menu ${isMenuOpen ? 'open' : ''}`}>
           <div className="mobile-menu-content">
-            <a 
-              href="#home"
-              className={`mobile-nav-item ${activeSection === 'home' ? 'active' : ''}`}
-              onClick={(e) => { e.preventDefault(); scrollToSection('home'); }}
-            >
-              <i className="fa fa-home"></i>
-              Home
-            </a>
-            <a 
-              href="#about"
-              className={`mobile-nav-item ${activeSection === 'about' ? 'active' : ''}`}
-              onClick={(e) => { e.preventDefault(); scrollToSection('about'); }}
-            >
-              <i className="fa fa-info-circle"></i>
-              About Us
-            </a>
-            <a 
-              href="#products"
-              className={`mobile-nav-item ${activeSection === 'products' ? 'active' : ''}`}
-              onClick={(e) => { e.preventDefault(); scrollToSection('products'); }}
-            >
-              <i className="fa fa-th"></i>
-              Products
-            </a>
-            <a 
-              href="#contact"
-              className={`mobile-nav-item ${activeSection === 'contact' ? 'active' : ''}`}
-              onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }}
-            >
-              <i className="fa fa-envelope"></i>
-              Contact
-            </a>
+            {isHomePage ? (
+              <>
+                <a 
+                  href="#home"
+                  className={`mobile-nav-item ${activeSection === 'home' ? 'active' : ''}`}
+                  onClick={(e) => { e.preventDefault(); scrollToSection('home'); }}
+                >
+                  <i className="fa fa-home"></i>
+                  Home
+                </a>
+                <a 
+                  href="#about"
+                  className={`mobile-nav-item ${activeSection === 'about' ? 'active' : ''}`}
+                  onClick={(e) => { e.preventDefault(); scrollToSection('about'); }}
+                >
+                  <i className="fa fa-info-circle"></i>
+                  About Us
+                </a>
+                <a 
+                  href="#products"
+                  className={`mobile-nav-item ${activeSection === 'products' ? 'active' : ''}`}
+                  onClick={(e) => { e.preventDefault(); scrollToSection('products'); }}
+                >
+                  <i className="fa fa-th"></i>
+                  Products
+                </a>
+                <a 
+                  href="#contact"
+                  className={`mobile-nav-item ${activeSection === 'contact' ? 'active' : ''}`}
+                  onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }}
+                >
+                  <i className="fa fa-envelope"></i>
+                  Contact
+                </a>
+              </>
+            ) : (
+              <>
+                <Link href="/#home" className="mobile-nav-item">
+                  <i className="fa fa-home"></i>
+                  Home
+                </Link>
+                <Link href="/#about" className="mobile-nav-item">
+                  <i className="fa fa-info-circle"></i>
+                  About Us
+                </Link>
+                <Link href="/#products" className="mobile-nav-item">
+                  <i className="fa fa-th"></i>
+                  Products
+                </Link>
+                <Link href="/#contact" className="mobile-nav-item">
+                  <i className="fa fa-envelope"></i>
+                  Contact
+                </Link>
+              </>
+            )}
             <div className="mobile-contact-info">
               <a href="tel:+971567945533">
                 <i className="fa fa-phone"></i> +971 56 794 5533

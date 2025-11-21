@@ -1,16 +1,20 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+
 export default function AccessControlGates() {
+  const router = useRouter();
+
   return (
     <>
       <section className="service_section layout_padding">
         <div className="container">
-          <a href="javascript:history.back()" className="back-button">
+          <button onClick={() => router.back()} className="back-button">
             <i className="fa fa-arrow-left" aria-hidden="true"></i> Back
-          </a>
+          </button>
           <div className="heading_container heading_center">
             <h2>Access Control Gates</h2>
-            </>
+          </div>
           <div className="row box">
             <div className="col-md-6">
               <div className="container">
@@ -18,21 +22,21 @@ export default function AccessControlGates() {
                   <div className="carousel-inner">
                     <div className="carousel-item active">
                       <img className="d-block w-100" height="300" src="/documents/Photos/Acess Control Gates/ttscpr1-speed-gate-550.png" alt="Access Control Gates" />
-                      </>
-                    </>
-                  </>
-                </>
-              </>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div className="col-md-6">
               <div className="detail-box">
                 <p>
                   Our Access Control Speed Gates ensures secure and efficient access control for high-traffic areas.
                 </p>
-                </>
-              </>
-            </>
-          </>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
-      </>
+    </>
   );
 }

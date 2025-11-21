@@ -21,13 +21,18 @@ export default function Home() {
       <section id="home" className="slider_section">
         <style dangerouslySetInnerHTML={{
           __html: `
+            .slider_section {
+              position: relative;
+              overflow: hidden;
+            }
             #myVideo {
               position: absolute;
-              right: 0;
-              bottom: 0;
+              top: 0;
+              left: 0;
               width: 100%;
-              height: auto;
-              z-index: -1;
+              height: 100%;
+              object-fit: cover;
+              z-index: 0;
             }
             .slider_section .carousel-inner {
               position: relative;
@@ -51,14 +56,6 @@ export default function Home() {
                           <span>Experience with Energetic!</span>
                         </h1>
                         <p>Premium gym equipment, sauna, steam rooms, and wellness solutions in Abu Dhabi, UAE</p>
-                        <div className="btn-box">
-                          <a href="#products" onClick={(e) => { e.preventDefault(); scrollToSection('products'); }} className="btn1">
-                            Explore Products
-                          </a>
-                          <a href="#contact" onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }} className="btn2">
-                            Get a Quote
-                          </a>
-                        </div>
                       </div>
                     </div>
                   </div>
@@ -74,14 +71,6 @@ export default function Home() {
                           <span>Our Priority!</span>
                         </h1>
                         <p>Trusted fitness solutions provider in Abu Dhabi - Quality, Innovation, Excellence</p>
-                        <div className="btn-box">
-                          <a href="#about" onClick={(e) => { e.preventDefault(); scrollToSection('about'); }} className="btn1">
-                            About Us
-                          </a>
-                          <a href="#contact" onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }} className="btn2">
-                            Contact Us
-                          </a>
-                        </div>
                       </div>
                     </div>
                   </div>
