@@ -1,56 +1,79 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import { useState } from 'react';
 
 export default function Sauna() {
   const router = useRouter();
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const images = [
+    { src: '/documents/Photos/Sauna & Steam Rooms/interior-of-finnish-sauna-classic-wooden-sauna-royalty-free-image-1677879860.jpg', alt: 'Finnish sauna interior' },
+    { src: '/documents/Photos/Sauna & Steam Rooms/pexels-heyho-8092430.jpg', alt: 'Luxury steam room' },
+    { src: '/documents/Photos/Sauna & Steam Rooms/pexels-maria-kosmidi-458108827-15598608.jpg', alt: 'Modern sauna design' }
+  ];
+
+  const goToSlide = (index: number) => setActiveIndex(index);
+  const goToPrevious = () => setActiveIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  const goToNext = () => setActiveIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
 
   return (
     <>
-      <section className="service_section layout_padding">
+      <section className="inner-page-hero">
         <div className="container">
           <button onClick={() => router.back()} className="back-button">
-            <i className="fa fa-arrow-left" aria-hidden="true"></i> Back
+            <i className="fa fa-arrow-left" aria-hidden="true"></i> Back to Products
           </button>
-          <div className="heading_container heading_center">
-            <h2>Sauna & Steam Rooms</h2>
-          </div>
-          <div className="row box">
-            <div className="col-md-6">
-              <div className="container">
-                <div id="carouselSauna" className="carousel slide" data-ride="carousel">
-                  <ol className="carousel-indicators">
-                    <li data-target="#carouselSauna" data-slide-to="0" className="active"></li>
-                    <li data-target="#carouselSauna" data-slide-to="1"></li>
-                    <li data-target="#carouselSauna" data-slide-to="2"></li>
-                  </ol>
-                  <div className="carousel-inner">
-                    <div className="carousel-item active">
-                      <img className="d-block w-100" height="300" src="/documents/Photos/Sauna & Steam Rooms/interior-of-finnish-sauna-classic-wooden-sauna-royalty-free-image-1677879860.jpg" alt="First slide" />
-                    </div>
-                    <div className="carousel-item">
-                      <img className="d-block w-100" height="300" src="/documents/Photos/Sauna & Steam Rooms/pexels-heyho-8092430.jpg" alt="Second slide" />
-                    </div>
-                    <div className="carousel-item">
-                      <img className="d-block w-100" height="300" src="/documents/Photos/Sauna & Steam Rooms/pexels-maria-kosmidi-458108827-15598608.jpg" alt="Third slide" />
-                    </div>
+          <h1 className="page-title">Sauna & Steam Rooms</h1>
+          <p className="page-subtitle">Custom Wellness Solutions for Ultimate Relaxation</p>
+        </div>
+      </section>
+
+      <section className="inner-page-content">
+        <div className="container">
+          <div className="row align-items-center">
+            <div className="col-lg-6 mb-4">
+              <div className="image-gallery">
+                <div className="carousel-container">
+                  <div className="carousel-indicators">
+                    {images.map((_, index) => (
+                      <button key={index} onClick={() => goToSlide(index)} className={index === activeIndex ? 'active' : ''} aria-label={`Go to slide ${index + 1}`} />
+                    ))}
                   </div>
-                  <a className="carousel-control-prev" href="#carouselSauna" role="button" data-slide="prev">
+                  <div className="carousel-inner">
+                    <img className="d-block w-100" src={images[activeIndex].src} alt={images[activeIndex].alt} />
+                  </div>
+                  <button className="carousel-control-prev" onClick={goToPrevious} aria-label="Previous slide">
                     <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span className="sr-only">Previous</span>
-                  </a>
-                  <a className="carousel-control-next" href="#carouselSauna" role="button" data-slide="next">
+                  </button>
+                  <button className="carousel-control-next" onClick={goToNext} aria-label="Next slide">
                     <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span className="sr-only">Next</span>
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
-            <div className="col-md-6">
-              <div className="detail-box">
+            <div className="col-lg-6">
+              <div className="content-box">
+                <h2>Premium Sauna & Steam Room Solutions</h2>
                 <p>
-                  At Energetic, we understand the importance of custom made solutions for each customer. By supplying products from industry&apos;s leaders in Finland and USA for saunas and steam rooms, we ensure unparalleled quality and durability.
+                  At Energetic, we understand the importance of custom-made wellness solutions tailored to each customer's unique needs. Transform your space into a sanctuary of relaxation and rejuvenation.
                 </p>
+                <h3>Why Choose Our Saunas & Steam Rooms?</h3>
+                <ul className="feature-list">
+                  <li><i className="fa fa-check-circle"></i> Industry-leading products from Finland & USA</li>
+                  <li><i className="fa fa-check-circle"></i> Custom-designed for your space</li>
+                  <li><i className="fa fa-check-circle"></i> Unparalleled quality and durability</li>
+                  <li><i className="fa fa-check-circle"></i> Professional installation & support</li>
+                  <li><i className="fa fa-check-circle"></i> Energy-efficient designs</li>
+                  <li><i className="fa fa-check-circle"></i> Premium materials and craftsmanship</li>
+                </ul>
+                <p className="highlight">
+                  Experience the perfect blend of traditional wellness practices with modern technology and design.
+                </p>
+                <Link href="/#contact" className="cta-button">
+                  Get a Quote <i className="fa fa-arrow-right"></i>
+                </Link>
               </div>
             </div>
           </div>

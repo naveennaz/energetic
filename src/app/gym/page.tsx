@@ -1,100 +1,120 @@
 'use client';
 
-import type { Metadata } from "next";
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-
-export const metadata: Metadata = {
-  title: "Gym Equipment Sale Abu Dhabi | Commercial Fitness Equipment UAE - Energetic",
-  description: "Buy premium gym equipment in Abu Dhabi, UAE. Energetic offers commercial gym equipment, home fitness solutions, installation & maintenance services. Best prices on quality fitness equipment.",
-  keywords: "gym equipment sale Abu Dhabi, buy gym equipment UAE, commercial gym equipment Abu Dhabi, fitness equipment supplier UAE, gym equipment installation Abu Dhabi, home gym equipment UAE, gym machines Abu Dhabi, fitness equipment sale UAE",
-  openGraph: {
-    title: "Gym Equipment Sale Abu Dhabi | Commercial Fitness Equipment UAE",
-    description: "Buy premium gym equipment in Abu Dhabi, UAE. Professional installation & maintenance services.",
-  },
-};
 
 export default function Gym() {
   const router = useRouter();
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const images = [
+    {
+      src: "/documents/Photos/Gym Equipments & Flooring/2A4A8268-4_0.jpg",
+      alt: "Commercial gym equipment for sale in Abu Dhabi UAE - Energetic Contracting"
+    },
+    {
+      src: "/documents/Photos/Gym Equipments & Flooring/gym-91849_1280.jpg",
+      alt: "Premium fitness equipment supplier Abu Dhabi - Energetic"
+    },
+    {
+      src: "/documents/Photos/Gym Equipments & Flooring/pexels-heyho-7031706.jpg",
+      alt: "Home and commercial gym equipment installation Abu Dhabi UAE"
+    }
+  ];
+
+  const goToSlide = (index: number) => {
+    setActiveIndex(index);
+  };
+
+  const goToPrevious = () => {
+    setActiveIndex((prevIndex) => 
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+    );
+  };
+
+  const goToNext = () => {
+    setActiveIndex((prevIndex) => 
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+    );
+  };
 
   return (
-    <section className="service_section layout_padding sub_page">
-      <div className="container">
-        <button onClick={() => router.back()} className="back-button">
-          <i className="fa fa-arrow-left" aria-hidden="true"></i> Back
-        </button>
-        <div className="heading_container heading_center">
-          <h1>Gym Equipment Sale in Abu Dhabi, UAE</h1>
+    <div className="inner-page">
+      <div className="inner-page-hero">
+        <div className="container">
+          <button onClick={() => router.back()} className="back-button">
+            <i className="fa fa-arrow-left" aria-hidden="true"></i> Back
+          </button>
+          <h1 className="page-title">Gym Equipment Sale in Abu Dhabi, UAE</h1>
+          <p className="page-subtitle">Premium Commercial & Home Fitness Equipment</p>
         </div>
-        <div className="row box">
-          <div className="col-md-6">
-            <div className="container">
-              <div id="carouselGym" className="carousel slide" data-ride="carousel">
-                <ol className="carousel-indicators">
-                  <li data-target="#carouselGym" data-slide-to="0" className="active"></li>
-                  <li data-target="#carouselGym" data-slide-to="1"></li>
-                  <li data-target="#carouselGym" data-slide-to="2"></li>
-                </ol>
-                <div className="carousel-inner">
-                  <div className="carousel-item active">
+      </div>
+
+      <div className="inner-page-content">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-6">
+              <div className="image-gallery">
+                <div className="carousel-container">
+                  <div className="carousel-inner">
                     <img
-                      className="d-block w-100"
-                      height="300"
-                      src="/documents/Photos/Gym Equipments & Flooring/2A4A8268-4_0.jpg"
-                      alt="Commercial gym equipment for sale in Abu Dhabi UAE - Energetic Contracting"
+                      src={images[activeIndex].src}
+                      alt={images[activeIndex].alt}
+                      style={{ width: '100%', height: 'auto' }}
                     />
                   </div>
-                  <div className="carousel-item">
-                    <img
-                      className="d-block w-100"
-                      height="300"
-                      src="/documents/Photos/Gym Equipments & Flooring/gym-91849_1280.jpg"
-                      alt="Premium fitness equipment supplier Abu Dhabi - Energetic"
-                    />
-                  </div>
-                  <div className="carousel-item">
-                    <img
-                      className="d-block w-100"
-                      height="300"
-                      src="/documents/Photos/Gym Equipments & Flooring/pexels-heyho-7031706.jpg"
-                      alt="Home and commercial gym equipment installation Abu Dhabi UAE"
-                    />
+                  <button 
+                    className="carousel-control-prev" 
+                    onClick={goToPrevious}
+                    aria-label="Previous"
+                  >
+                    <i className="fa fa-chevron-left" aria-hidden="true"></i>
+                  </button>
+                  <button 
+                    className="carousel-control-next" 
+                    onClick={goToNext}
+                    aria-label="Next"
+                  >
+                    <i className="fa fa-chevron-right" aria-hidden="true"></i>
+                  </button>
+                  <div className="carousel-indicators">
+                    {images.map((_, index) => (
+                      <button
+                        key={index}
+                        className={index === activeIndex ? 'active' : ''}
+                        onClick={() => goToSlide(index)}
+                        aria-label={`Go to slide ${index + 1}`}
+                      />
+                    ))}
                   </div>
                 </div>
-                <a className="carousel-control-prev" href="#carouselGym" role="button" data-slide="prev">
-                  <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span className="sr-only">Previous</span>
-                </a>
-                <a className="carousel-control-next" href="#carouselGym" role="button" data-slide="next">
-                  <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span className="sr-only">Next</span>
-                </a>
               </div>
             </div>
-          </div>
-          <div className="col-md-6">
-            <div className="detail-box">
-              <h2>Premium Gym Equipment Supplier in Abu Dhabi</h2>
-              <p>
-                <strong>Energetic Contracting LLC</strong> is your trusted <strong>gym equipment supplier in Abu Dhabi, UAE</strong>. We take pride in offering a comprehensive range of premium fitness equipment for sale, including complete supply, professional installation, and maintenance services throughout the UAE.
-              </p>
-              <p>
-                Whether you&apos;re setting up a <strong>commercial gym in Abu Dhabi</strong>, a corporate fitness centre, or a home gym, we provide high-quality gym equipment that meets both your fitness goals and budget requirements. Our services cover all of Abu Dhabi and the wider UAE region.
-              </p>
-              <h3>Our Gym Equipment Services in Abu Dhabi:</h3>
-              <ul>
-                <li>Commercial gym equipment supply and installation</li>
-                <li>Home gym equipment sale in Abu Dhabi</li>
-                <li>Corporate fitness center solutions</li>
-                <li>Ongoing maintenance and support services</li>
-                <li>Fitness equipment consultation and planning</li>
-              </ul>
-              <p>
-                Contact us today for the best <strong>gym equipment prices in Abu Dhabi, UAE</strong>.
-              </p>
+            <div className="col-lg-6">
+              <div className="content-box">
+                <h2>Premium Gym Equipment Supplier in Abu Dhabi</h2>
+                <p>
+                  <strong>Energetic Contracting LLC</strong> is your trusted <strong>gym equipment supplier in Abu Dhabi, UAE</strong>. We take pride in offering a comprehensive range of premium fitness equipment for sale, including complete supply, professional installation, and maintenance services throughout the UAE.
+                </p>
+                <p>
+                  Whether you&apos;re setting up a <strong>commercial gym in Abu Dhabi</strong>, a corporate fitness centre, or a home gym, we provide high-quality gym equipment that meets both your fitness goals and budget requirements. Our services cover all of Abu Dhabi and the wider UAE region.
+                </p>
+                <h3>Our Gym Equipment Services in Abu Dhabi:</h3>
+                <ul className="feature-list">
+                  <li><i className="fa fa-check-circle"></i> Commercial gym equipment supply and installation</li>
+                  <li><i className="fa fa-check-circle"></i> Home gym equipment sale in Abu Dhabi</li>
+                  <li><i className="fa fa-check-circle"></i> Corporate fitness center solutions</li>
+                  <li><i className="fa fa-check-circle"></i> Ongoing maintenance and support services</li>
+                  <li><i className="fa fa-check-circle"></i> Fitness equipment consultation and planning</li>
+                </ul>
+                <p className="highlight">
+                  Contact us today for the best <strong>gym equipment prices in Abu Dhabi, UAE</strong>.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
