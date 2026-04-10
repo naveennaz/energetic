@@ -1,36 +1,122 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Energetic - Next.js Application
+
+This is the Next.js version of the Energetic website.
 
 ## Getting Started
 
-First, run the development server:
+### 1. Install Dependencies
+
+First, install the required npm packages:
+
+```bash
+npm install
+```
+
+### 2. Run the Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 4. Build for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+energetic/
+├── app/
+│   ├── layout.tsx          # Root layout with Header and Footer
+│   ├── page.tsx             # Home page
+│   ├── globals.css          # Global styles
+│   ├── about/
+│   │   └── page.tsx         # About page
+│   ├── service/
+│   │   └── page.tsx         # Services/Products page
+│   ├── contact/
+│   │   └── page.tsx         # Contact page
+│   ├── courts-flooring/
+│   │   └── page.tsx         # Court flooring details
+│   ├── sauna/
+│   │   └── page.tsx         # Sauna details
+│   ├── gym/
+│   │   └── page.tsx         # Gym equipment details
+│   ├── smart-lockers/
+│   │   └── page.tsx         # Smart lockers details
+│   ├── jacuzzi/
+│   │   └── page.tsx         # Jacuzzi details
+│   └── guard/
+│       └── page.tsx         # Guard house details
+├── components/
+│   ├── Header.tsx           # Navigation header
+│   ├── Footer.tsx           # Footer with contact info
+│   └── ProductsComponent.tsx # Products grid
+├── public/
+│   ├── css/                 # Copied from original
+│   ├── documents/           # Copied from original
+│   ├── fonts/               # Copied from original
+│   ├── images/              # Copied from original
+│   └── js/                  # Bootstrap JS
+├── package.json
+├── next.config.js
+└── tsconfig.json
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Key Changes
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 1. **React Components**
+- HTML pages converted to React components (`.tsx` files)
+- Reusable Header and Footer components
+- Client-side navigation with Next.js Link
 
-## Deploy on Vercel
+### 2. **Routing**
+- File-based routing instead of separate HTML files
+- Dynamic active states in navigation
+- No need for jQuery to load header/footer
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 3. **Static Assets**
+- All assets moved to `public/` directory
+- Paths updated to work with Next.js
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 4. **JavaScript**
+- Bootstrap carousel works with Next.js
+- Custom JavaScript converted to React hooks (`useEffect`, `useState`)
+- No jQuery dependency for component loading
+
+### 5. **Styling**
+- CSS files served from public directory
+- Support for CSS-in-JS with styled-jsx
+- Bootstrap CSS loaded globally
+
+## Pages
+
+1. **Home** (`/`) - Landing page with video background and about section
+2. **About** (`/about`) - Company information
+3. **Services** (`/service`) - Products listing
+4. **Contact** (`/contact`) - Contact form and map
+5. **Product Details** - Individual pages for each product
+
+## Technologies Used
+
+- Next.js 14
+- React 18
+- TypeScript
+- Bootstrap CSS
+- Font Awesome
+
+## Browser Support
+
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+
+## License
+
+All rights reserved © Energetic Contracting LLC

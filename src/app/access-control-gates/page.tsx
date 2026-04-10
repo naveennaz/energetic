@@ -1,84 +1,107 @@
-'use client';
+"use client";
 
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
-import { useState } from 'react';
-
-export default function AccessControlGates() {
-  const router = useRouter();
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  const images = [
-    { src: '/documents/Photos/Acess Control Gates/ttscpr1-speed-gate-550.png', alt: 'Speed gate access control' },
-    { src: '/documents/Photos/Acess Control Gates/WhatsApp Image 2024-07-03 at 4.00.03 PM.jpeg', alt: 'Access control system' },
-    { src: '/documents/Photos/Acess Control Gates/WhatsApp Image 2024-07-03 at 4.00.28 PM.jpeg', alt: 'Security gate installation' }
-  ];
-
-  const goToSlide = (index: number) => setActiveIndex(index);
-  const goToPrevious = () => setActiveIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
-  const goToNext = () => setActiveIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
-
+export default function AccessControlGatesPage() {
   return (
-    <>
-      <section className="inner-page-hero">
-        <div className="container">
-          <button onClick={() => router.back()} className="back-button">
-            <i className="fa fa-arrow-left" aria-hidden="true"></i> Back to Products
-          </button>
-          <h1 className="page-title">Access Control Gates</h1>
-          <p className="page-subtitle">Secure Speed Gates for High-Traffic Areas</p>
+    <section className="service_section layout_padding">
+      <div className="container">
+        <a href="javascript:history.back()" className="back-button">
+          <i className="fa fa-arrow-left" aria-hidden="true"></i> Back
+        </a>
+        <div className="heading_container heading_center">
+          <h2>Access Control Gates</h2>
         </div>
-      </section>
-
-      <section className="inner-page-content">
-        <div className="container">
-          <div className="row align-items-center">
-            <div className="col-lg-6 mb-4">
-              <div className="image-gallery">
-                <div className="carousel-container">
-                  <div className="carousel-indicators">
-                    {images.map((_, index) => (
-                      <button key={index} onClick={() => goToSlide(index)} className={index === activeIndex ? 'active' : ''} aria-label={`Go to slide ${index + 1}`} />
-                    ))}
+        <div className="row box">
+          <div className="col-md-6">
+            <div className="container">
+              <div
+                id="carouselExampleIndicators"
+                className="carousel slide"
+                data-ride="carousel"
+              >
+                <ol className="carousel-indicators">
+                  <li
+                    data-target="#carouselExampleIndicators"
+                    data-slide-to="0"
+                    className="active"
+                  ></li>
+                  <li
+                    data-target="#carouselExampleIndicators"
+                    data-slide-to="1"
+                  ></li>
+                  <li
+                    data-target="#carouselExampleIndicators"
+                    data-slide-to="2"
+                  ></li>
+                </ol>
+                <div className="carousel-inner">
+                  <div className="carousel-item active">
+                    <img
+                      className="d-block w-100"
+                      height="300px"
+                      width="auto"
+                      src="/documents/Photos/Acess Control Gates/ttscpr1-speed-gate-550.png"
+                      alt="First slide"
+                    />
                   </div>
-                  <div className="carousel-inner">
-                    <img className="d-block w-100" src={images[activeIndex].src} alt={images[activeIndex].alt} />
+                  <div className="carousel-item">
+                    <img
+                      className="d-block w-100"
+                      height="300px"
+                      width="auto"
+                      src="/documents/Photos/Acess Control Gates/WhatsApp Image 2024-07-03 at 4.00.03 PM.jpeg"
+                      alt="Second slide"
+                    />
                   </div>
-                  <button className="carousel-control-prev" onClick={goToPrevious} aria-label="Previous slide">
-                    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                  </button>
-                  <button className="carousel-control-next" onClick={goToNext} aria-label="Next slide">
-                    <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                  </button>
+                  <div className="carousel-item">
+                    <img
+                      className="d-block w-100"
+                      height="300px"
+                      width="auto"
+                      src="/documents/Photos/Acess Control Gates/WhatsApp Image 2024-07-03 at 4.00.28 PM.jpeg"
+                      alt="Third slide"
+                    />
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div className="col-lg-6">
-              <div className="content-box">
-                <h2>Professional Access Control Solutions</h2>
-                <p>
-                  Our Access Control Speed Gates ensure secure and efficient access management for high-traffic commercial areas, corporate buildings, and fitness facilities.
-                </p>
-                <h3>Key Features</h3>
-                <ul className="feature-list">
-                  <li><i className="fa fa-check-circle"></i> High-Speed Entry & Exit Management</li>
-                  <li><i className="fa fa-check-circle"></i> Advanced Security Technology</li>
-                  <li><i className="fa fa-check-circle"></i> Seamless Integration with Access Systems</li>
-                  <li><i className="fa fa-check-circle"></i> Durable & Reliable Construction</li>
-                  <li><i className="fa fa-check-circle"></i> Sleek & Professional Design</li>
-                  <li><i className="fa fa-check-circle"></i> Ideal for High-Traffic Areas</li>
-                </ul>
-                <p className="highlight">
-                  Perfect for corporate offices, gyms, hotels, and any facility requiring controlled access management.
-                </p>
-                <Link href="/#contact" className="cta-button">
-                  Get a Quote <i className="fa fa-arrow-right"></i>
-                </Link>
+                <a
+                  className="carousel-control-prev"
+                  href="#carouselExampleIndicators"
+                  role="button"
+                  data-slide="prev"
+                >
+                  <span
+                    className="carousel-control-prev-icon"
+                    aria-hidden="true"
+                  ></span>
+                  <span className="sr-only">Previous</span>
+                </a>
+                <a
+                  className="carousel-control-next"
+                  href="#carouselExampleIndicators"
+                  role="button"
+                  data-slide="next"
+                >
+                  <span
+                    className="carousel-control-next-icon"
+                    aria-hidden="true"
+                  ></span>
+                  <span className="sr-only">Next</span>
+                </a>
               </div>
             </div>
           </div>
+          <div className="col-md-6">
+            <div className="detail-box">
+              <p>
+                Our Access Control Speed Gates ensures secure and efficient
+                access control for high-traffic areas. It supports multiple
+                authentication methods such as Facial Recognition, RFID Card and
+                Wristband Access. Durable and reliable, the sleek design
+                integrates seamlessly into any setting.
+              </p>
+            </div>
+          </div>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }

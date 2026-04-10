@@ -1,84 +1,108 @@
-'use client';
+"use client";
 
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
-import { useState } from 'react';
-
-export default function SmartLockers() {
-  const router = useRouter();
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  const images = [
-    { src: '/documents/Photos/Smart Lockers/dayuse-7d1985fa1733956cf578a4eefa07bd48.jpg', alt: 'Smart locker system' },
-    { src: '/documents/Photos/Smart Lockers/WhatsApp Image 2024-07-03 at 4.00.52 PM.jpeg', alt: 'Modern smart lockers' },
-    { src: '/documents/Photos/Smart Lockers/WhatsApp Image 2024-07-03 at 4.01.15 PM.jpeg', alt: 'Smart locker installation' }
-  ];
-
-  const goToSlide = (index: number) => setActiveIndex(index);
-  const goToPrevious = () => setActiveIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
-  const goToNext = () => setActiveIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
-
+export default function SmartLockersPage() {
   return (
-    <>
-      <section className="inner-page-hero">
-        <div className="container">
-          <button onClick={() => router.back()} className="back-button">
-            <i className="fa fa-arrow-left" aria-hidden="true"></i> Back to Products
-          </button>
-          <h1 className="page-title">Smart Lockers</h1>
-          <p className="page-subtitle">Secure & Convenient Storage Solutions</p>
+    <section className="service_section layout_padding">
+      <div className="container">
+        <a href="javascript:history.back()" className="back-button">
+          <i className="fa fa-arrow-left" aria-hidden="true"></i> Back
+        </a>
+        <div className="heading_container heading_center">
+          <h2>Smart Lockers</h2>
         </div>
-      </section>
-
-      <section className="inner-page-content">
-        <div className="container">
-          <div className="row align-items-center">
-            <div className="col-lg-6 mb-4">
-              <div className="image-gallery">
-                <div className="carousel-container">
-                  <div className="carousel-indicators">
-                    {images.map((_, index) => (
-                      <button key={index} onClick={() => goToSlide(index)} className={index === activeIndex ? 'active' : ''} aria-label={`Go to slide ${index + 1}`} />
-                    ))}
+        <div className="row box">
+          <div className="col-md-6">
+            <div className="container">
+              <div
+                id="carouselExampleIndicators"
+                className="carousel slide"
+                data-ride="carousel"
+              >
+                <ol className="carousel-indicators">
+                  <li
+                    data-target="#carouselExampleIndicators"
+                    data-slide-to="0"
+                    className="active"
+                  ></li>
+                  <li
+                    data-target="#carouselExampleIndicators"
+                    data-slide-to="1"
+                  ></li>
+                  <li
+                    data-target="#carouselExampleIndicators"
+                    data-slide-to="2"
+                  ></li>
+                </ol>
+                <div className="carousel-inner">
+                  <div className="carousel-item active">
+                    <img
+                      className="d-block w-100"
+                      height="300px"
+                      width="auto"
+                      src="/documents/Photos/Smart Lockers/dayuse-7d1985fa1733956cf578a4eefa07bd48.jpg"
+                      alt="First slide"
+                    />
                   </div>
-                  <div className="carousel-inner">
-                    <img className="d-block w-100" src={images[activeIndex].src} alt={images[activeIndex].alt} />
+                  <div className="carousel-item">
+                    <img
+                      className="d-block w-100"
+                      height="300px"
+                      width="auto"
+                      src="/documents/Photos/Smart Lockers/WhatsApp Image 2024-07-03 at 4.01.15 PM.jpeg"
+                      alt="Second slide"
+                    />
                   </div>
-                  <button className="carousel-control-prev" onClick={goToPrevious} aria-label="Previous slide">
-                    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                  </button>
-                  <button className="carousel-control-next" onClick={goToNext} aria-label="Next slide">
-                    <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                  </button>
+                  <div className="carousel-item">
+                    <img
+                      className="d-block w-100"
+                      height="300px"
+                      width="auto"
+                      src="/documents/Photos/Smart Lockers/WhatsApp Image 2024-07-03 at 4.00.52 PM.jpeg"
+                      alt="Third slide"
+                    />
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div className="col-lg-6">
-              <div className="content-box">
-                <h2>Modern Smart Locker Systems</h2>
-                <p>
-                  Energetic's Smart Lockers offer secure and convenient storage solutions for various industries including fitness centers, offices, schools, and recreational facilities.
-                </p>
-                <h3>Key Features</h3>
-                <ul className="feature-list">
-                  <li><i className="fa fa-check-circle"></i> RFID Card Access Technology</li>
-                  <li><i className="fa fa-check-circle"></i> Wristband Access System</li>
-                  <li><i className="fa fa-check-circle"></i> Secure & Reliable Storage</li>
-                  <li><i className="fa fa-check-circle"></i> User-Friendly Interface</li>
-                  <li><i className="fa fa-check-circle"></i> Modern & Stylish Design</li>
-                  <li><i className="fa fa-check-circle"></i> Easy Management System</li>
-                </ul>
-                <p className="highlight">
-                  Perfect for gyms, spas, corporate offices, and any facility requiring secure personal storage.
-                </p>
-                <Link href="/#contact" className="cta-button">
-                  Get a Quote <i className="fa fa-arrow-right"></i>
-                </Link>
+                <a
+                  className="carousel-control-prev"
+                  href="#carouselExampleIndicators"
+                  role="button"
+                  data-slide="prev"
+                >
+                  <span
+                    className="carousel-control-prev-icon"
+                    aria-hidden="true"
+                  ></span>
+                  <span className="sr-only">Previous</span>
+                </a>
+                <a
+                  className="carousel-control-next"
+                  href="#carouselExampleIndicators"
+                  role="button"
+                  data-slide="next"
+                >
+                  <span
+                    className="carousel-control-next-icon"
+                    aria-hidden="true"
+                  ></span>
+                  <span className="sr-only">Next</span>
+                </a>
               </div>
             </div>
           </div>
+          <div className="col-md-6">
+            <div className="detail-box">
+              <p>
+                Energetic's Smart Lockers offer secure and convenient storage
+                solutions for various industries. It features RFID Card Access
+                and Wristband Access. Built with high-quality materials, our
+                Smart Lockers provide user-friendly interfaces and customizable
+                configurations, making them ideal for staff storage, gyms and
+                package delivery systems.
+              </p>
+            </div>
+          </div>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }

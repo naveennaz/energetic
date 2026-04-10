@@ -972,13 +972,6 @@ a:focus {
 .read_more_section .product_details_box .detail-box a:hover {
   text-decoration: underline;
 }
-
-.imageBox {
-  /* gap: 10px;
-  margin-right: 10px;
-  height: 200px; */
-}
-
 .product_details_image {
   width: auto;
   height: 200px;

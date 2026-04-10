@@ -1,5 +1,5 @@
-import ProductsSection from '@/components/ProductsSection';
+import ProductsComponent from "@/src/components/ProductsComponent";
 
-export default function Service() {
-  return <ProductsSection />;
+export default function ServicePage() {
+  return <ProductsComponent />;
 }
